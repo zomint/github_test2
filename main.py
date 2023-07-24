@@ -9,12 +9,12 @@ token = os.environ.get('GITHUB_TOKEN')
 if token is None or token == '':
     print("can't get github token")
     exit(-1)
-    
+
 print('token: ', token)
 
 remote_url = 'https://github.com/zomint/github_test.git'
 
-remote_url.replace('https://', f'https://{token}@')
+remote_url.replace('https://', f'https://zomint:{token}@')
 
 project_root_path = os.path.split(__file__)[0]
 repo_path = os.path.join(project_root_path, 'repo')
@@ -24,6 +24,10 @@ repo_path = os.path.join(project_root_path, 'repo')
 repo = git.Repo.clone_from(url=remote_url.replace('https://',
                                                   f'https://{token}@'),
                            to_path=repo_path)
+
+# repo.git.config('--global', 'credential.helper', 'store')
+# repo.git.config('--global', 'user.name', 'zomint')
+# repo.git.config('--global', 'user.password', token)
 
 now = datetime.now()
 
