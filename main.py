@@ -20,13 +20,13 @@ repo_path = os.path.join(project_root_path, 'repo')
   # shutil.rmtree(repo_path)
 
 repo = git.Repo.clone_from(url=remote_url.replace('https://',
-                                                  f'https://zomint:{token}@'),
+                                                  f'https://oauth2:{token}@'),
                            to_path=repo_path)
 
-repo.git.config('--global', 'credential.helper', 'store')
-repo.git.config('--global', 'user.name', 'zomint')
-repo.git.config('--global', 'user.password', token)
-repo.git.config('--list')
+# repo.git.config('--global', 'credential.helper', 'store')
+# repo.git.config('--global', 'user.name', 'zomint')
+# repo.git.config('--global', 'user.password', token)
+# repo.git.config('--list')
 
 now = datetime.now()
 
@@ -44,7 +44,7 @@ file.close()
 index = repo.index
 index.add(['test.txt'])  # 添加要提交的文件
 
-# author = git.Actor("auto", "your.email@example.com")  # 设置提交者信息
+author = git.Actor("zomint", "zomint@163.com")  # 设置提交者信息
 commit_message = "update"  # 提交信息
 index.commit(commit_message)
 
