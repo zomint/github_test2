@@ -14,15 +14,13 @@ print('token: ', token)
 
 remote_url = 'https://github.com/zomint/github_test.git'
 
-remote_url.replace('https://', f'https://zomint:{token}@')
-
 project_root_path = os.path.split(__file__)[0]
 repo_path = os.path.join(project_root_path, 'repo')
 # if os.path.exists(repo_path):
   # shutil.rmtree(repo_path)
 
 repo = git.Repo.clone_from(url=remote_url.replace('https://',
-                                                  f'https://{token}@'),
+                                                  f'https://zomint:{token}@'),
                            to_path=repo_path)
 
 # repo.git.config('--global', 'credential.helper', 'store')
