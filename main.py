@@ -23,9 +23,10 @@ repo = git.Repo.clone_from(url=remote_url.replace('https://',
                                                   f'https://zomint:{token}@'),
                            to_path=repo_path)
 
-# repo.git.config('--global', 'credential.helper', 'store')
-# repo.git.config('--global', 'user.name', 'zomint')
-# repo.git.config('--global', 'user.password', token)
+repo.git.config('--global', 'credential.helper', 'store')
+repo.git.config('--global', 'user.name', 'zomint')
+repo.git.config('--global', 'user.password', token)
+repo.git.config('--list')
 
 now = datetime.now()
 
