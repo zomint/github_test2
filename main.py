@@ -43,9 +43,10 @@ file.close()
 index = repo.index
 index.add(['test.txt'])  # 添加要提交的文件
 
-author = git.Actor("auto", "your.email@example.com")  # 设置提交者信息
+# author = git.Actor("auto", "your.email@example.com")  # 设置提交者信息
 commit_message = "update"  # 提交信息
-index.commit(commit_message, author=author)
+index.commit(commit_message)
 
 origin = repo.remote()  # 获取默认的远程仓库
+print('origin.url:', origin.url)
 origin.push()
