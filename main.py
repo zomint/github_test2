@@ -9,6 +9,8 @@ token = os.environ.get('GITHUB_TOKEN')
 if token is None or token == '':
     print("can't get github token")
     exit(-1)
+    
+print('token: ', token)
 
 remote_url = 'https://github.com/zomint/github_test.git'
 
